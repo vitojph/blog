@@ -16,7 +16,8 @@
 
 # Grupo de estudio local para fast.ai
 
-> twitter: https://twitter.com/vitojph/status/1232308792601333761
+> twitter: https://twitter.com/vitojph/status/1232308792601333761?s=20
+
 
 Los que estáis al tanto del mundillo *Machine Learning*, estoy seguro de que habéis oído hablar de [fast.ai](https://www.fast.ai/), de la formidable [librería de Python para tareas de *Deep Learning*](https://docs.fast.ai/) y [la efervescente comunidad de usuarios que se ha formado alrededor](https://forums.fast.ai/). Y probablemente sabréis que este año se publica [la v2 de la librería](https://dev.fast.ai/) y que dentro de una semanas echa a andar [un curso presencial en la Universidad de San Francisco](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one).
 
