@@ -8,7 +8,7 @@ var documents = [{
     "id": 1,
     "url": "https://vitojph.github.io/about/",
     "title": "About Me",
-    "body": "This is where you put the contents of your About page. Like all your pages, it’s in Markdown format. This website is powered by fastpages 1.       a blogging platform that natively supports Jupyter notebooks in addition to other formats.  &#8617;    "
+    "body": "WhoMy name’s Víctor Peinado and I’m an NLP practioner. Please notice here NLP stands for Natural Language Processing, a subfield ofArtificial Intelligence devote to make machines understand natural language. WhatI’m a language geek. I always dreamed of talking machines. I currently work as a Senior NLP/ML Engineer at Reply. ai. I also enjoy teaching stuff about Machine Learning, Deep Learning, and Natural Language Processing. I used to work at Minsait/INDRA, helping apply NLP and ML to AI products for different domains. And before that, I helped develop Google’s Natural Language products, teached Computacional Linguistics courses at UCM, and did some research on NLP and Multilingual Information Access at UNED’s NLP&amp;IR Group. In the free time, I love running, riding my bike, playing the guitar… "
     }, {
     "id": 2,
     "url": "https://vitojph.github.io/categories/",
