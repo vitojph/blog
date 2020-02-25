@@ -11,9 +11,12 @@
 - show_tags: true
 #- metadata_key1: metadata_value1
 #- metadata_key2: metadata_value2
+- author: Víctor Peinado
 ---
 
-# Curso de estudio local para fast.ai
+# Grupo de estudio local para fast.ai
+
+> twitter: https://twitter.com/vitojph/status/1232308792601333761
 
 Los que estáis al tanto del mundillo *Machine Learning*, estoy seguro de que habéis oído hablar de [fast.ai](https://www.fast.ai/), de la formidable [librería de Python para tareas de *Deep Learning*](https://docs.fast.ai/) y [la efervescente comunidad de usuarios que se ha formado alrededor](https://forums.fast.ai/). Y probablemente sabréis que este año se publica [la v2 de la librería](https://dev.fast.ai/) y que dentro de una semanas echa a andar [un curso presencial en la Universidad de San Francisco](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one).
 
@@ -21,5 +24,5 @@ Como ir a SF no está al alcance de todos, un grupo de personas estamos organiza
 
 El curso se celebra los martes, del 17 de marzo al 5 de mayo (en la madrugada europea). Nuestra idea inicial es no pegarnos el madrugón y juntarnos en algún sitio los jueves por la tarde, ver los vídeos, seguir las clases y resolver dudas, entre todos.
 
-¿Quién más se apunta?
+¿Quién más se apunta? 
 
