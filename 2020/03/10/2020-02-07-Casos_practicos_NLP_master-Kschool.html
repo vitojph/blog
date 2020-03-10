@@ -13,9 +13,9 @@
 <meta property="og:url" content="https://vitojph.github.io/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html" />
 <meta property="og:site_name" content="Random Thoughts" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-03-10T03:51:22-05:00" />
+<meta property="article:published_time" content="2020-03-10T04:13:59-05:00" />
 <script type="application/ld+json">
-{"description":"Este fin de semana he vuelto a dar clase en el Máster de Inteligencia Artificial y Deep Learning de Kschool para las sesiones de casos prácticos de procesamiento del lenguaje natural.","@type":"BlogPosting","headline":"Casos prácticos de NLP en el Máster de Kschool","dateModified":"2020-03-10T03:51:22-05:00","datePublished":"2020-03-10T03:51:22-05:00","url":"https://vitojph.github.io/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://vitojph.github.io/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html"},"@context":"https://schema.org"}</script>
+{"description":"Este fin de semana he vuelto a dar clase en el Máster de Inteligencia Artificial y Deep Learning de Kschool para las sesiones de casos prácticos de procesamiento del lenguaje natural.","@type":"BlogPosting","url":"https://vitojph.github.io/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html","headline":"Casos prácticos de NLP en el Máster de Kschool","dateModified":"2020-03-10T04:13:59-05:00","datePublished":"2020-03-10T04:13:59-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vitojph.github.io/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -90,7 +90,7 @@
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Casos prácticos de NLP en el Máster de Kschool</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-10T03:51:22-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Casos prácticos de NLP en el Máster de Kschool</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-10T04:13:59-05:00" itemprop="datePublished">
         Mar 10, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -114,30 +114,56 @@
 <p>Hubo tiempo para hacer muchas cosas todo:</p>
 
 <ul>
-  <li>
-    <p>juguetear con modelos ya pre-entrenados para extraer tripletas de relaciones
-en tweets y noticias,</p>
-  </li>
-  <li>
-    <p>hacer <em>fine tuning</em> de BERT, DistilBERT y RoBERTa con colecciones de datos públicas,</p>
-  </li>
+  <li>juguetear con modelos ya pre-entrenados para extraer tripletas de relaciones
+en tweets y noticias,</li>
 </ul>
 
-<p><img src="img/ner.png" alt="Named Entities Recognition" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
-<p><img src="img/sentiment.png" alt="Sentiment Classification" /></p>
+<span class="n">facts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">texts</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">sents</span><span class="p">:</span>
+        <span class="n">who</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">whom</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"ROOT"</span><span class="p">:</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">elif</span> <span class="n">who</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"nsubj"</span><span class="p">:</span>
+                <span class="n">who</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">elif</span> <span class="n">what</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"dobj"</span> <span class="ow">or</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"attr"</span> <span class="ow">or</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"ccomp"</span><span class="p">:</span>
+                <span class="n">what</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">elif</span> <span class="n">whom</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span> <span class="o">==</span> <span class="s">"iobj"</span><span class="p">:</span>
+                <span class="n">whom</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="k">if</span> <span class="n">who</span><span class="p">:</span>
+        <span class="n">facts</span><span class="p">[</span><span class="n">who</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">who</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">whom</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">search_facts_about</span><span class="p">(</span><span class="n">who</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">facts</span><span class="p">[</span><span class="n">who</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>hacer <em>fine tuning</em> de BERT, DistilBERT y RoBERTa con colecciones de datos públicas,</li>
+</ul>
+
+<p><img src="/blog/images/ner.png" alt="" title="Named Entities Recognition" /></p>
+
+<p><img src="/blog/images/sentiment.png" alt="" title="Sentiment Classification" /></p>
 
 <ul>
   <li>trackear experimentos y compartir resultados en <a href="https://www.wandb.com/">Weights &amp; Biases</a>,</li>
 </ul>
 
-<p><img src="img/wandb.png" alt="Tracking experiments on W&amp;B" /></p>
+<p><img src="/blog/images/wandb.png" alt="" title="Tracking experiments live on W&amp;B" /></p>
 
 <ul>
   <li>y cerrar el módulo de NLP haciendo aplicaciones sencillitas con <a href="https://www.streamlit.io/">Streamlit</a>.</li>
 </ul>
 
-<p><img src="img/ner.png" alt="Streamlit app for NER" /></p>
+<p><img src="/blog/images/streamlit.png" alt="" title="Streamlit app for NER" /></p>
 
   </div><a class="u-url" href="/blog/2020/03/10/2020-02-07-Casos_practicos_NLP_master-Kschool.html" hidden></a>
 </article>
