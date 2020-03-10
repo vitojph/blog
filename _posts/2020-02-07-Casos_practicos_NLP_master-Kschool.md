@@ -7,7 +7,7 @@
 - badges: true
 - comments: true
 #- image: images/some_folder/your_image.png
-- categories: [fastai, DL]
+- categories: [NLP, Kschool, AI, DL]
 - show_tags: true
 #- metadata_key1: metadata_value1
 #- metadata_key2: metadata_value2
@@ -25,18 +25,46 @@ Hubo tiempo para hacer muchas cosas todo:
 - juguetear con modelos ya pre-entrenados para extraer tripletas de relaciones
   en tweets y noticias,
 
+```python
+from collections import defaultdict
+
+facts = defaultdict(list)
+
+for text in tqdm(texts):
+    doc = nlp(text)
+    for sentence in doc.sents:
+        who, action, what, whom = None, None, None, None
+        for token in sentence:
+            if action == None and token.dep_ == "ROOT":
+                action = token.text
+            elif who == None and token.dep_ == "nsubj":
+                who = token.text
+            elif what == None and token.dep_ == "dobj" or token.dep_ == "attr" or token.dep_ == "ccomp":
+                what = token.text
+            elif whom == None and token.dep_ == "iobj":
+                whom = token.text
+
+    if who:
+        facts[who.lower()].append((who, action, what, whom))
+
+
+def search_facts_about(who: str):
+    return facts[who.lower()]
+
+```
+
 - hacer *fine tuning* de BERT, DistilBERT y RoBERTa con colecciones de datos públicas,
 
-![Named Entities Recognition](img/ner.png)
+![]({{ site.baseurl }}/images/ner.png "Named Entities Recognition")
 
-![Sentiment Classification](img/sentiment.png)
+![]({{ site.baseurl }}/images/sentiment.png "Sentiment Classification")
 
 - trackear experimentos y compartir resultados en [Weights & Biases](https://www.wandb.com/), 
 
-![Tracking experiments on W&B](img/wandb.png)
+![]({{ site.baseurl }}/images/wandb.png "Tracking experiments live on W&B")
 
 - y cerrar el módulo de NLP haciendo aplicaciones sencillitas con [Streamlit](https://www.streamlit.io/).
 
-![Streamlit app for NER](img/ner.png)
+![]({{ site.baseurl }}/images/streamlit.png "Streamlit app for NER")
 
 
